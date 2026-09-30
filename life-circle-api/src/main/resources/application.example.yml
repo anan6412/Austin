@@ -1,0 +1,52 @@
+# ---------------------------------------------------------------------------
+# 这是模板，不是可运行配置。
+# 复制成 application.yml 后填入自己的值再启动：
+#   cp application.example.yml application.yml
+# application.yml 已被 .gitignore 忽略（含口令与第三方 Key）。
+# ---------------------------------------------------------------------------
+
+server:
+  # 与 application.properties 里的 server.port 保持一致
+  port: 8081
+
+spring:
+  application:
+    name: life-circle-api
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/lifecircle?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 换成你自己的数据库口令
+
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      database: 0
+      # password: 有口令时再填
+      timeout: 3000ms
+
+  cache:
+    # 帖子的附近查询缓存与商铺缓存都走 Redis
+    type: redis
+    redis:
+      time-to-live: 300000
+
+mybatis-plus:
+  configuration:
+    # 下划线列名 -> 驼峰字段（user_id -> userId）
+    map-underscore-to-camel-case: true
+  global-config:
+    db-config:
+      id-type: assign_uuid
+
+# 高德开放平台 —— 必须是「Web 服务」类型的 Key，
+# 不是「Web 端(JS API)」的类型，否则逆地理编码会返回 INVALID_USER_KEY
+amap:
+  key: 换成你自己的高德 Web 服务 Key
+  base-url: https://restapi.amap.com
+
+logging:
+  level:
+    com.lifecircle: debug

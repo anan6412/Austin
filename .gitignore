@@ -1,0 +1,38 @@
+# ---------- Java / Maven ----------
+target/
+*.class
+*.jar
+*.war
+!**/src/main/**/*.jar
+
+# 含数据库口令与高德 Key，绝对不要提交
+**/application.yml
+**/application-local.yml
+**/application-prod.yml
+
+# ---------- IDE ----------
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+!.vscode/extensions.json
+
+# ---------- Node / 前端 ----------
+node_modules/
+dist/
+dist-ssr/
+.vite/
+*.local
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.env
+.env.*
+!.env.example
+
+# ---------- 系统 ----------
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
